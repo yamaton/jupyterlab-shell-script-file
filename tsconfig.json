@@ -1,17 +1,22 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "lib": ["es2015", "dom"],
+    "esModuleInterop": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "outDir": "lib",
     "rootDir": "src",
     "strict": true,
-    "strictNullChecks": false,
-    "target": "es2015",
-    "types": []
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "target": "esnext",
   },
   "include": ["src/*"]
 }

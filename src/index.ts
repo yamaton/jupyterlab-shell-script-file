@@ -1,5 +1,6 @@
 import {
-  JupyterLab, JupyterLabPlugin
+  JupyterFrontEnd,
+  JupyterFrontEndPlugin,
 } from '@jupyterlab/application';
 
 import { ICommandPalette } from '@jupyterlab/apputils';
@@ -26,7 +27,7 @@ namespace CommandIDs {
 };
 
 function activate(
-  app: JupyterLab,
+  app: JupyterFrontEnd,
   browserFactory: IFileBrowserFactory,
   launcher: ILauncher,
   menu: IMainMenu | null,
@@ -210,7 +211,7 @@ function prepareFileMenu(menu: any) {
   ], 30);
 }
 
-const extension: JupyterLabPlugin<void> = {
+const extension: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab-shell-script-file',
   autoStart: true,
   requires: [
