@@ -7,9 +7,9 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/enlznep/jupyterlab-shell-file",
+  "homepage": "https://github.com/yamaton/jupyterlab-shell-script-file",
   "bugs": {
-    "url": "https://github.com/enlznep/jupyterlab-shell-file/issues"
+    "url": "https://github.com/yamaton/jupyterlab-shell-script-file/issues"
   },
   "license": "BSD-3-Clause",
   "author": "Ray Marc Marcellones",
@@ -21,7 +21,7 @@
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/enlznep/jupyterlab-shell-file.git"
+    "url": "https://github.com/yamaton/jupyterlab-shell-script-file.git"
   },
   "scripts": {
     "build": "tsc",
