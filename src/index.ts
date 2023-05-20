@@ -14,12 +14,9 @@ import '../style/index.css';
 const FACTORY = 'Editor';
 const PALETTE_CATEGORY = 'Text Editor';
 const ICON_CLASS = 'jp-FileIcon';
-const SLURM_ICON_CLASS = 'jp-slurmIcon';
 const SHELL_ICON_CLASS = 'jp-shellIcon'
 const SHELL_EXT_LABEL = "Shell Script";
-const SLURM_EXT_LABEL = "Job Script";
 const SHELL_EXT = "sh";
-const SLURM_EXT = "sbatch";
 
 namespace CommandIDs {
   export const createFile = 'fileeditor:create-file';
@@ -79,12 +76,7 @@ function activate(
         toArray(
           map(currentWidget.selectedItems(), item => {
             const fileName = item.path.split(" ").join("\\ ");
-            let fileNameExt = item.path.split(".");
             let command = `bash ${fileName}`;
-
-            if (fileNameExt[fileNameExt.length-1] === SLURM_EXT) {
-              command = `sbatch ${fileName}`;
-            }
 
             return commands.execute('terminal:create-new', {
               initialCommand: command
@@ -115,18 +107,6 @@ function prepareLauncher(launcher: any) {
     },
     rank: 2
   });
-
-  launcher.add({
-    command: CommandIDs.createFile,
-    category: 'Slurm',
-    args: {
-      displayIcon: true,
-      iconClass: `${ICON_CLASS} ${SLURM_ICON_CLASS}`,
-      ext: SLURM_EXT,
-      extLabel: SLURM_EXT_LABEL
-    },
-    rank: 1
-  });
 }
 
 function preparePalette(palette: any) {
@@ -139,15 +119,6 @@ function preparePalette(palette: any) {
     category: PALETTE_CATEGORY
   });
 
-  palette.addItem({
-    command: CommandIDs.createFile,
-    args: {
-      isPalette: true,
-      ext: SLURM_EXT,
-      extLabel: SLURM_EXT_LABEL
-    },
-    category: PALETTE_CATEGORY
-  });
 }
 
 function prepareContextMenu(app: any) {
@@ -174,18 +145,6 @@ function prepareContextMenu(app: any) {
     rank: -0.5
   });
 
-  app.contextMenu.addItem({
-    command: CommandIDs.createFile,
-    selector: selectorContent,
-    args: {
-      displayIcon: true,
-      iconClass: `${ICON_CLASS} ${SLURM_ICON_CLASS}`,
-      isPalette: true,
-      ext: SLURM_EXT,
-      extLabel: SLURM_EXT_LABEL
-    },
-    rank: -0.5
-  });
 }
 
 function prepareFileMenu(menu: any) {
@@ -197,15 +156,6 @@ function prepareFileMenu(menu: any) {
         iconClass: `${ICON_CLASS} ${SHELL_ICON_CLASS}`,
         ext: SHELL_EXT,
         extLabel: SHELL_EXT_LABEL
-      }
-    },
-    {
-      command: CommandIDs.createFile,
-      args: {
-        displayIcon: true,
-        iconClass: `${ICON_CLASS} ${SLURM_ICON_CLASS}`,
-        ext: SLURM_EXT,
-        extLabel: SLURM_EXT_LABEL
       }
     }
   ], 30);
